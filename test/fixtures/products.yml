@@ -1,0 +1,22 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  image_url: cooker3.jpg
+  price: 9.99
+
+two:
+  title: MyString
+  description: MyText
+  image_url: cooker3.jpg
+  price: 9.99
+
+synix:
+  title:    Digital TV
+  description:
+    Synix is a digital TV with an inbuilt decoder,free to air channels
+    full HD pictures and it is made in India
+  price:    56.50
+  image_url:    synix3.jpg  
+
