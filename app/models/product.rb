@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+    #prevents deletion of product that are referenced by line items
+    has_many :line_items
+    before_destroy :ensure_not_referenced_by_any_line_item
     
     validates :title, :description, :image_url, presence: true
 
@@ -7,4 +10,14 @@ class Product < ApplicationRecord
     validates :title, uniqueness: true, length: {minimum: 10}
     validates :image_url, allow_blank: true, format:{with: %r{\.(gif|jpg|png)\Z}i,
          message: 'must be URL for GIF,JPG or png.'}
+
+
+         private
+         #ensure that there are no line items referencing this product
+         def ensure_not_referenced_by_any_line_item 
+            unless line_items.empty?
+                errors.add(:base, 'Line Items present')
+                throw :abort
+            end
+        end
 end
